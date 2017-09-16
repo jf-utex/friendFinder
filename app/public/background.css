@@ -1,0 +1,17 @@
+body {
+  background-color: #fc8b53;
+}
+
+.jumbotron {
+  color: #fb6753;
+  text-align: center;
+  background-color: #fdd55a;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.icon-grin:before {
+  content: "\e9e9";
+  color: #fb6753;
+}
