@@ -44,8 +44,18 @@
        console.log("=============================");
 
        // push in the user input into the friendArray
-       friendsData.push(req.body);
+      //  friendsData.push(req.body);
+       var friendData = [];
 
+       if (friendData.length < 5) {
+         friendData.push(req.body);
+         res.json(true);
+
+       //  else {
+       //    waitListData.push(req.body);
+       //    res.json(false);
+       //  }
+       };
        // respond back with the best match
        res.json({
          name: friendsData[bestMatch].name,
@@ -56,39 +66,20 @@
 
    }
 
-   // API POST Requests
-   // Below code handles when a user submits a form and thus submits data to the server.
-   // In each of the below cases, when a user submits form data (a JSON object)
-   // ...the JSON is pushed to the appropriate JavaScript array
-   // (ex. User fills out a reservation request... this data is then sent to the server...
-   // Then the server saves the data to the tableData array)
-   // ---------------------------------------------------------------------------
-
-
    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
    //this will calculate compatibility and send the corresponding friend to the modal
-   var friendData = ()
 
-   if (friendData.length < 5) {
-     friendData.push(req.body);
-     res.json(true);
-   }
-   //  else {
-   //    waitListData.push(req.body);
-   //    res.json(false);
-   //  }
-   });
 
    // ---------------------------------------------------------------------------
    // I added this below code so you could clear out the table while working with the functionality.
    // Don"t worry about it!
 
-   app.post("/api/clear", function() {
-     // Empty out the arrays of data
-     tableData = [];
-     waitListData = [];
+  //  app.post("/api/clear", function() {
+  //    // Empty out the arrays of data
+  //    tableData = [];
+  //    waitListData = [];
+   //
+  //    console.log(tableData);
+  //  });
 
-     console.log(tableData);
-   });
-   };
    //displays all possible friends

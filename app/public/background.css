@@ -11,10 +11,11 @@ body {
   align-items: center;
 }
 
-.icon-grin:before {
+/*.icon-grin {
   content: "\e9e9";
   color: #fb6753;
-}
+}*/
+
 .footer {
   color: black;
 }
@@ -39,7 +40,6 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
 }
-
 
 /* Modal Content/Box */
 

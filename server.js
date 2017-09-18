@@ -4,7 +4,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-
+// var apiRoutes = require("./routing/apiRouting.js");
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -21,18 +21,19 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // =============================================================
 
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
+  res.sendFile(path.join(__dirname, "app/public/home.html"));
 });
 
 app.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "survey.html"));
+  res.sendFile(path.join(__dirname, "app/public/survey.html"));
 });
 
 app.get("/friends", function(req, res) {
-  res.sendFile(path.join(__dirname, "friends.js"));
+  res.sendFile(path.join(__dirname, "app/data/friends.js"));
   res.json(friendsArray);
-
 });
+require("./app/routing/apiRouting")(app);
+require("./app/routing/htmlRouting")(app);
 
 // Starts the server to begin listening
 // =============================================================

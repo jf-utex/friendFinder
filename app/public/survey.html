@@ -9,15 +9,18 @@
   <!-- Points to Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Points to Ico-Moon Glyphicons -->
-  <link rel="stylesheet" href="https://i.icomoon.io/public/temp/1f2bb2e189/UntitledProject/style.css">
+
   <!-- Points to jQuery-->
   <script src="https://code.jquery.com/jquery.js"></script>
-  <link rel="stylesheet" href="background.css" </head>
+  <link rel="stylesheet" href="background.css" >
+</head>
 
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1 class><span class="icon-grin"></span>  Friend Finder</h1>
+        <!-- <h1 class><span class=""<link rel="stylesheet" href="https://i.icomoon.io/public/temp/1f2bb2e189/UntitledProject/style.css">
+
+        </span>Friend Finder</h1> -->
         <hr>
       </div>
     </div>
@@ -27,7 +30,7 @@
       <div class="container">
         <div class="text-center">
           <a href="/"><button type="button" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-home"></span></button></a>
-          <a href="./data/friends"><button type="button" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-list-alt"></span> View Friends</button></a>
+          <!-- <a href="/friends"><button type="button" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-list-alt"></span> View Friends</button></a> -->
 
         </div>
         <h2>Survey Questions</h2>
@@ -217,22 +220,14 @@
         </div>
       </div>
 
+
+
       <script type="text/javascript">
-        // Create New friends - takes in JSON input
-        app.post("/api/data/friends", function(req, res) {
-          var newfriend = req.body;
-          newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
-
-          console.log(newfriend);
-
-          friend.push(newfriend);
-
-          res.json(newfriend);
-        });
 
         $("#submit").on("click", function(event) {
             event.preventDefault();
-            name: $("#name").val().trim(),
+            var newFriend = {
+              name: $("#name").val().trim(),
               photo: $("#photo").val().trim(),
               scores: [
                 $("#q1").val(),
@@ -246,20 +241,20 @@
                 $("#q9").val(),
                 $("#q10").val()
               ]
-
           };
+          // Create New friends - takes in JSON input
+          $.post("data/friends", function(req, res) {
+            var newfriend = req.body;
+            newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
 
-          // Question: What does this code do??
-          $.post("/api/data/friends", newFriend)
-          .done(function(data) {
-            if (data) {
-              console.log(data);
-              // $("friendArray").empty();
-              // $('')
-            };
+            console.log(newfriend);
 
+            friend.push(newfriend);
+
+            res.json(newfriend);
           });
-        );
+
+        });
       </script>
     </body>
 
