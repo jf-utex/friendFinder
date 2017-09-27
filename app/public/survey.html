@@ -186,7 +186,7 @@
           </div>
           <div class="modal-body">
             <h2 id="matchName"></h2>
-            <img id="matchImg" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+            <img id="matchImg" src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.w3schools.com%2Fcss%2Ftrolltunga.jpg&imgrefurl=https%3A%2F%2Fwww.w3schools.com%2Fcss%2Fcss3_images.asp&docid=2bZLA8JdC6ZaTM&tbnid=lAHthDF3S1ACoM%3A&vet=10ahUKEwiyiIH3t8bWAhWixlQKHe0KAwkQMwjhASgBMAE..i&w=1000&h=300&bih=921&biw=1316&q=image&ved=0ahUKEwiyiIH3t8bWAhWixlQKHe0KAwkQMwjhASgBMAE&iact=mrc&uact=8" alt="">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -214,9 +214,9 @@
         }
       };
 
-      for (var selector in config) {
-        $(selector).chosen(config[selector]);
-      }
+      // for (var selector in config) {
+      //   $(selector).chosen(config[selector]);
+      // }
 
       $("#submit").on("click", function(event) {
         event.preventDefault();
@@ -263,7 +263,7 @@
 
           var currentURL = window.location.origin
 
-          $.post(currentURL) + "/api/friends", newFriend,
+          $.post( "/api/friends", newFriend,
             function(data) {
               alert("working");
 
@@ -273,7 +273,7 @@
               //
               // // Show the modal with the best match
               $("#resultsmodal").modal("toggle");
-            };
+            });
       } else {
         alert("Please fill out all fields before submitting!");
       }
