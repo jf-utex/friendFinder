@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Friend Finder</title>
+
+  <!-- Points to jQuery-->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
   <!-- Points to Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Points to Ico-Moon Glyphicons -->
-  <!-- Points to jQuery-->
-  <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="background.css">
 </head>
 
@@ -23,7 +27,7 @@
       <hr>
     </div>
   </div>
-  <div class="container">
+
     <div class="text-center">
       <a href="/"><button type="button" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-home"></span></button></a>
       <!-- <a href="/friends"><button type="button" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-list-alt"></span> View Friends</button></a> -->
@@ -178,7 +182,6 @@
 
     <div id="resultsModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -245,7 +248,7 @@
         if (validateForm()) {
 
           var newFriend = {
-            name: $("#name").val().trim(),
+            name: $("#name").val(),
             photo: $("#photo").val(),
             scores: [
               $("#q1").val(),
@@ -263,16 +266,17 @@
 
           var currentURL = window.location.origin
 
-          $.post( "/api/friends", newFriend,
+          $.post("/api/friends", newFriend,
             function(data) {
               alert("working");
 
               // // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-              $("#match-name").text(data.name);
-              $("#match-img").attr("src", data.photo);
+              $("#matchName").text(data.name);
+              $("#matchImg").attr("src", data.photo);
               //
               // // Show the modal with the best match
-              $("#resultsmodal").modal("toggle");
+              $("#resultsModal").modal("toggle");
+
             });
       } else {
         alert("Please fill out all fields before submitting!");
