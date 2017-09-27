@@ -1,10 +1,5 @@
-   // ===============================================================================
-   // LOAD DATA
-   // ===============================================================================
 
-   var friends = require("../data/friends.js");
-
-   var friendsArray = exports.friendsArray;
+   var friends = require("../data/friends");
 
    // ===============================================================================
    // ROUTING
@@ -17,40 +12,39 @@
      // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
      // ---------------------------------------------------------------------------
 
-     app.get("/api/data/friends", function(req, res) {
-       res.json(friendsArray);
+     app.get("/api/friends", function(req, res) {
+       res.json(friends);
      });
 
-     app.post("/api/data/friends", function(req, res) {
+     app.post("/api/friends", function(req, res) {
+
        var bestMatch = {
          name: "",
          photo: "",
-         bestDiff : 1000
-       };
+         bestDiff: 1000
 
+       };
        var userData = req.body;
        var userScores = userData.scores;
-
-       var totalDifference;
+       var totalDifference = 0;
 
        for (var i = 0; i < friends.length; i++) {
          var currentFriend = friends[i];
-         var totalDifference = 0;
+         totalDifference = 0;
 
          console.log(currentFriend.name);
 
+
          for (var k = 0; k < currentFriend.scores.length; k++) {
            var currentFriendScore = currentFriend.scores[k];
-           var currentUserScore = userScore[k];
-
-
+           var currentUserScore = userScores[k]
            totalDifference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
          }
 
-         if (totalDifference <= bestMatch.frientDifference) {
+         if (totalDifference <= bestMatch.bestDiff) {
            bestMatch.name = currentFriend.name;
            bestMatch.photo = currentFriend.photo;
-           bestMatch.friendDifference = totalDifference;
+           bestMatch.bestDiff = totalDifference;
          }
        }
        friends.push(userData);
@@ -59,4 +53,4 @@
        // respond back with the best match
        res.json(bestMatch);
      });
-   };
+   }
