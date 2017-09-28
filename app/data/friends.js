@@ -1,5 +1,5 @@
 
- var friendsArray = [
+ var friends = [
   {
     "name": "Alfalfa",
     "photo":"https://en.wikipedia.org/wiki/File:Alfalfa_gip.jpg",
@@ -64,4 +64,4 @@
 }
 
 ];
-module.exports = friendsArray;
+module.exports = friends;

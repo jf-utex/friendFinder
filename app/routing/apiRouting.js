@@ -29,23 +29,27 @@
        var totalDifference = 0;
 
        for (var i = 0; i < friends.length; i++) {
-         var currentFriend = friends[i];
+         console.log(friends[i].name);
+        //  var currentFriend = friends[i];
          totalDifference = 0;
 
-         console.log(currentFriend.name);
 
 
-         for (var k = 0; k < currentFriend.scores.length; k++) {
-           var currentFriendScore = currentFriend.scores[k];
-           var currentUserScore = userScores[k]
-           totalDifference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
+
+         for (var k = 0; k < friends[i].scores[k]; k++) {
+
+
+          //  var currentFriendScore = currentFriend.scores[k];
+          //  var currentUserScore = userScores[k]
+           totalDifference += Math.abs(parseInt(userScores[k]) - parseInt(friends[i].scores[k]));
+
          }
-
          if (totalDifference <= bestMatch.bestDiff) {
            bestMatch.name = currentFriend.name;
            bestMatch.photo = currentFriend.photo;
            bestMatch.bestDiff = totalDifference;
          }
+
        }
        friends.push(userData);
 
@@ -53,4 +57,4 @@
        // respond back with the best match
        res.json(bestMatch);
      });
-   }
+   };
