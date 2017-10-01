@@ -219,9 +219,9 @@
       }
     };
 
-    // for (var selector in config) {
-    //   $(selector).chosen(config[selector]);
-    // }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
 
     $("#submit").on("click", function(event) {
       event.preventDefault();
@@ -266,7 +266,7 @@
           ]
         };
 
-        // var currentURL = window.location.origin
+        var currentURL = window.location.origin
 
         $.post("/api/friends", newFriend,
           function(data) {
