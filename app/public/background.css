@@ -1,11 +1,12 @@
 body {
-  background-color: #fc8b53;
+  background: url("hands.jpg");
+  color: #F5F47A;
 }
 
 .jumbotron {
-  color: #fb6753;
+  color: #F5F47A;
   text-align: center;
-  background-color: #fdd55a;
+  background-color: #0A0794;
   align-content: center;
   justify-items: center;
   align-items: center;
@@ -36,6 +37,10 @@ body {
   /* Black w/ opacity */
 }
 
+#form-control{
+  color: white;
+
+}
 /* Modal Content/Box */
 
 .modal-content {
