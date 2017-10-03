@@ -10,7 +10,7 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-
+app.use("public", express.static('public'))
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
