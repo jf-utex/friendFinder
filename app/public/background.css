@@ -1,5 +1,5 @@
 body {
-  background: url("public/hands.jpg");
+  background: url("/hands.jpg");
   color: #F5F47A;
 }
 
@@ -35,6 +35,10 @@ body {
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
+}
+
+.modal-backdrop {
+  z-index: -5;
 }
 
 #form-control{
